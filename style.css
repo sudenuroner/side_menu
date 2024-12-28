@@ -1,0 +1,241 @@
+:root {
+    --primary-color: #222831;
+    --text: #eee;
+    --sidebar-gray: #393e46;
+    --sidebar-gray-light: #b8bcc3;
+    --sidebar-gray-background: #00adb5;
+    --success: #00c896;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    position: sticky;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    background-color: var(--primary-color);
+    width: 18rem;
+    padding: 4px 12px;
+    display: flex;
+    flex-direction: column;
+    color: var(--text);
+    transition: width 0.5s linear;
+}
+
+.sidebar-top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 40px;
+    padding: 16px 0px;
+}
+
+.logo__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.logo {
+    width: 54px;
+    height: 54px;
+    background-color: var(--sidebar-gray-background);
+    border-radius: 12px;
+}
+
+.expand-btn {
+    position: absolute;
+    right: -50px;
+    top: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--text);
+    border-radius: 50%;
+    box-shadow: rgba(96, 103, 235, 0.31) 0px 2px 8px 0px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+.expand-btn img {
+    transform: rotate(180);
+    stroke: var(--primary-color);
+    width: 38px;
+    height: 38px;
+}
+
+img {
+    width: 30px;
+}
+
+.sidebar-links {
+    padding: 8px 0px;
+    border: 1px solid var(--sidebar-gray-background);
+}
+
+.sidebar-links ul {
+    list-style: none;
+    position: relative;
+}
+
+.sidebar-links li {
+    position: relative;
+}
+
+.sidebar-links li a {
+    padding: 12px 10px;
+    margin: 8px 0px;
+    color: var(--sidebar-gray-light);
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-radius: 10px;
+    height: 56px;
+    text-decoration: none;
+    transition: all 300ms ease-in;
+}
+
+li a img {
+    width: 34px;
+    height: 34px;
+}
+
+.sidebar-links .link {
+    margin-left: 30px;
+}
+
+.sidebar-links li a:hover,
+.sidebar-links li a:focus {
+    width: 100%;
+    text-decoration: none;
+    background-color: var(--sidebar-gray-background);
+    border: 10px;
+    outline: none;
+    color: var(--sidebar-gray-light);
+}
+
+.sidebar-bottom {
+    padding: 8px 0px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: auto;
+}
+
+.sidebar__profile {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 18px;
+    padding: 24px 2px;
+    border-top: 1px solid var(--sidebar-gray-background);
+}
+
+.avatar__wrapper {
+    position: relative;
+    display: flex;
+}
+
+.avatar {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+    filter: drop-shadow(-20px 0 10px rgba(0, 0, 0, 0.1));
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+    transition: 300ms all ease-in-out;
+}
+
+.avatar__name {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.user-name {
+    font-size: 0.95rem;
+    font-weight: 800;
+    text-align: left;
+}
+
+.email {
+    font-size: 0.9rem;
+}
+
+.online__status {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: var(--success);
+    border-radius: 50%;
+    bottom: 3px;
+    right: 3px;
+}
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip__content {
+    visibility: hidden;
+    background-color: var(--sidebar-gray-background);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 6px 12px;
+    position: absolute;
+    z-index: 1;
+    left: 75px;
+}
+
+.expand-btn {
+    background-color: var(--sidebar-gray-background);
+}
+
+
+/* js de collapsed açıp kapatılıcak*/
+body.collapsed nav {
+    width: 80px;
+}
+
+body.collapsed .hide {
+    position: absolute;
+    display: none;
+    pointer-events: none;
+}
+
+body.collapsed .sidebar-top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+body.collapsed .expand-btn img {
+    transform: rotate(360deg);
+}
+
+body.collapsed .tooltip:hover .tooltip__content,
+body.collapsed .tooltip:focus .tooltip__content {
+    visibility: hidden;
+}
